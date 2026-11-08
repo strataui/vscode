@@ -1,0 +1,48 @@
+{
+  "name": "strata-vscode",
+  "displayName": "Strata & RSX Language Support",
+  "description": "Language Server Protocol (LSP), tree-sitter grammars, syntax highlighting, and editor tooling for Strata & RSX",
+  "version": "0.1.0",
+  "publisher": "strataui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/strataui/vscode"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters",
+    "Snippets"
+  ],
+  "keywords": [
+    "rust",
+    "strata",
+    "rsx",
+    "tailwind",
+    "lsp"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "rsx",
+        "aliases": [
+          "RSX",
+          "rsx"
+        ],
+        "extensions": [
+          ".rsx"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "rsx",
+        "scopeName": "source.rsx",
+        "path": "./syntaxes/rsx.tmLanguage.json"
+      }
+    ]
+  }
+}

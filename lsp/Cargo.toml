@@ -1,0 +1,26 @@
+[package]
+name = "strata_lsp"
+version = "0.1.0"
+edition = "2021"
+authors = ["Strata Contributors"]
+license = "MIT"
+description = "Strata Language Server Protocol (LSP 3.17) implementation in pure Rust"
+repository = "https://github.com/strataui/vscode"
+
+[[bin]]
+name = "strata-lsp"
+path = "src/main.rs"
+
+[lib]
+name = "strata_lsp"
+path = "src/lib.rs"
+
+[dependencies]
+strata_style = { path = "../../strata/crates/core/strata_style" }
+strata_ui = { path = "../../strata/crates/ui/strata_ui" }
+strata_primitives = { path = "../../strata/crates/core/strata_primitives" }
+strata_js = { path = "../../strata/crates/runtime/strata_js" }
+tree-sitter = "0.27.2"
+tree-sitter-rust = "0.24.2"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
