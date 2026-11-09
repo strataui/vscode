@@ -16,10 +16,10 @@ name = "strata_lsp"
 path = "src/lib.rs"
 
 [dependencies]
-strata_style = { path = "../../strata/crates/core/strata_style" }
-strata_ui = { path = "../../strata/crates/ui/strata_ui" }
-strata_primitives = { path = "../../strata/crates/core/strata_primitives" }
-strata_js = { path = "../../strata/crates/runtime/strata_js" }
+strata_style = { git = "https://github.com/strataui/strata.git" }
+strata_ui = { git = "https://github.com/strataui/strata.git" }
+strata_primitives = { git = "https://github.com/strataui/strata.git" }
+strata_js = { git = "https://github.com/strataui/strata.git" }
 tree-sitter = "0.27.2"
 tree-sitter-rust = "0.24.2"
 serde = { version = "1.0", features = ["derive"] }

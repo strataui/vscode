@@ -6,3 +6,4 @@
 node_modules/
 *.vsix
 out/
+client/out/

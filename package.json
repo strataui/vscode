@@ -9,7 +9,7 @@
     "url": "https://github.com/strataui/vscode"
   },
   "engines": {
-    "vscode": "^1.75.0"
+    "vscode": "^1.82.0"
   },
   "categories": [
     "Programming Languages",
@@ -23,6 +23,17 @@
     "tailwind",
     "lsp"
   ],
+  "main": "./client/out/extension.js",
+  "activationEvents": [
+    "onLanguage:rsx",
+    "onLanguage:rust"
+  ],
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./client/tsconfig.json",
+    "watch": "tsc -w -p ./client/tsconfig.json",
+    "build": "npm run compile"
+  },
   "contributes": {
     "languages": [
       {
@@ -43,6 +54,42 @@
         "scopeName": "source.rsx",
         "path": "./syntaxes/rsx.tmLanguage.json"
       }
-    ]
+    ],
+    "commands": [
+      {
+        "command": "strata.restartServer",
+        "title": "Strata: Restart Language Server",
+        "category": "Strata"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Strata",
+      "properties": {
+        "strata.lsp.serverPath": {
+          "type": "string",
+          "default": "",
+          "description": "Path to the strata-lsp executable binary. If omitted, the extension searches PATH and workspace target directories."
+        },
+        "strata.lsp.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between VS Code and the Strata language server."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vscode-languageclient": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.82.0",
+    "typescript": "^5.3.3"
   }
 }

@@ -428,3 +428,45 @@ pub fn Widget() -> Rsx {
     assert!(hint_res.contains(": i32"), "Must suggest inferred type hint : i32 for let count = 42");
 }
 
+#[test]
+fn test_vscode_extension_manifest_and_client_entrypoint() {
+    let manifest_path = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../package.json");
+    assert!(manifest_path.exists(), "package.json must exist in vscode root");
+    let content = std::fs::read_to_string(&manifest_path).expect("Failed to read package.json");
+    let json: serde_json::Value = serde_json::from_str(&content).expect("package.json must be valid JSON");
+
+    // 1. Activation entrypoint
+    assert_eq!(
+        json.get("main").and_then(|v| v.as_str()),
+        Some("./client/out/extension.js"),
+        "VS Code extension must declare main entrypoint ./client/out/extension.js"
+    );
+
+    // 2. Activation events
+    let activation_events = json
+        .get("activationEvents")
+        .and_then(|v| v.as_array())
+        .expect("activationEvents must be an array");
+    let event_strings: Vec<&str> = activation_events
+        .iter()
+        .filter_map(|v| v.as_str())
+        .collect();
+    assert!(event_strings.contains(&"onLanguage:rsx"), "Must activate on RSX language");
+    assert!(event_strings.contains(&"onLanguage:rust"), "Must activate on Rust language");
+
+    // 3. Contributed configuration
+    let config = &json["contributes"]["configuration"]["properties"];
+    assert!(
+        config.get("strata.lsp.serverPath").is_some(),
+        "Must contribute strata.lsp.serverPath setting"
+    );
+
+    // 4. Client source files
+    let client_ts = std::path::Path::new(env!("CARGO_MANIFEST_DIR")).join("../client/src/extension.ts");
+    assert!(client_ts.exists(), "client/src/extension.ts must exist");
+    let ts_source = std::fs::read_to_string(&client_ts).expect("Failed to read extension.ts");
+    assert!(ts_source.contains("export async function activate"), "Must export activate()");
+    assert!(ts_source.contains("export async function deactivate"), "Must export deactivate()");
+    assert!(ts_source.contains("resolveServerBinary"), "Must implement binary resolution");
+}
+
