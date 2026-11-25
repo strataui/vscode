@@ -1,11 +1,15 @@
 [package]
-name = "strata_lsp"
+name = "strata-lsp"
 version = "0.1.0"
 edition = "2021"
 authors = ["Strata Contributors"]
 license = "MIT"
 description = "Strata Language Server Protocol (LSP 3.17) implementation in pure Rust"
 repository = "https://github.com/strataui/vscode"
+homepage = "https://github.com/strataui/vscode"
+documentation = "https://docs.rs/strata-lsp"
+keywords = ["lsp", "language-server", "strata", "tailwind", "rsx"]
+categories = ["development-tools"]
 
 [[bin]]
 name = "strata-lsp"
@@ -16,11 +20,13 @@ name = "strata_lsp"
 path = "src/lib.rs"
 
 [dependencies]
-strata_style = { git = "https://github.com/strataui/strata.git" }
-strata_ui = { git = "https://github.com/strataui/strata.git" }
-strata_primitives = { git = "https://github.com/strataui/strata.git" }
-strata_js = { git = "https://github.com/strataui/strata.git" }
+strata-style = "0.1.0"
+strata-components = "0.1.2"
+strata-primitives = "0.1.0"
 tree-sitter = "0.27.2"
 tree-sitter-rust = "0.24.2"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
+
+[profile.dev]
+opt-level = 1

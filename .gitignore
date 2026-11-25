@@ -7,3 +7,6 @@ node_modules/
 *.vsix
 out/
 client/out/
+
+# Local sibling-repo development patches (never commit)
+lsp/.cargo/config.toml
