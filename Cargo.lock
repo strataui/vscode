@@ -814,14 +814,14 @@ checksum = "a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f"
 
 [[package]]
 name = "strata-aria"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "strata-dom",
 ]
 
 [[package]]
 name = "strata-components"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "strata-aria",
  "strata-dom",
@@ -833,7 +833,7 @@ dependencies = [
 
 [[package]]
 name = "strata-dom"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "strata-primitives",
 ]
@@ -847,7 +847,7 @@ dependencies = [
 
 [[package]]
 name = "strata-icons"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "strata-dom",
  "strata-macro",
@@ -856,7 +856,7 @@ dependencies = [
 
 [[package]]
 name = "strata-layout"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "strata-primitives",
  "strata-style",
@@ -877,7 +877,7 @@ dependencies = [
 
 [[package]]
 name = "strata-macro"
-version = "0.1.2"
+version = "0.1.3"
 
 [[package]]
 name = "strata-primitives"
@@ -885,7 +885,7 @@ version = "0.1.0"
 
 [[package]]
 name = "strata-render"
-version = "0.1.2"
+version = "0.1.3"
 dependencies = [
  "bytemuck",
  "miniz_oxide",
@@ -901,7 +901,7 @@ dependencies = [
 
 [[package]]
 name = "strata-style"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "strata-primitives",
 ]
@@ -1407,4 +1407,4 @@ checksum = "29666d0abbfad1e3dc4dcf6144730dd3a3ab225bbbdac83319345b1b44ccfc1b"
 
 [[patch.unused]]
 name = "strata-js"
-version = "0.1.0"
+version = "0.1.1"
